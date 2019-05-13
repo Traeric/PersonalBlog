@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load blog %}
+
+{% block title %}Eric Jin个人博客{% endblock %}
+
+{% block css %}
+    <link href="{% static 'css/index.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="banner">
+        <section class="box">
+            <ul class="texts">
+                <p>我遇到过很多人。有人让我发烧，我以为那是爱情，结果烧坏了所有。</p>
+                <p>有人让我发冷，从此消失在生命里。有人让我觉得温暖，但仅仅是温暖而已。</p>
+                <p>只有你，让我的体温上升0.2℃。</p>
+            </ul>
+            <div class="avatar"><a href="javascript:void(0);"><span>金鑫</span></a></div>
+        </section>
+    </div>
+    <div class="template">
+        <div class="box">
+            <h3>
+                <p><span>最热门</span>文章推荐</p>
+            </h3>
+            <ul>
+                {% for hot in hot_article %}
+                    <li>
+                        <a href="{% url 'article_details' hot.id %}"><img src="{{ hot.image }}" alt="NO IMG"></a>
+                        <span>{{ hot.name }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <article>
+        <h2 class="title_tj">
+            <p>文章<span>推荐</span></p>
+        </h2>
+        <div class="bloglist left" id="blog_show">
+            {% for recommand in recommend_article %}
+                <h3><a href="{% url 'article_details' recommand.id %}">{{ recommand.name }}</a></h3>
+                <figure><img src="{{ recommand.image }}" alt="NO IMG"></figure>
+                <ul>
+                    <p>{{ recommand.abstract }}</p>
+                    <a title="{{ recommand.name }}" href="{% url 'article_details' recommand.id %}" class="readmore" style="text-decoration: none;">阅读全文>></a>
+                </ul>
+                <p class="dateview">
+                    <span>{{ recommand.time|date:'Y-m-d' }}</span>
+                    <span>作者：金鑫</span>
+                </p>
+            {% endfor %}
+        </div>
+        <aside class="right">
+            <div class="weather">
+                <iframe width="250" scrolling="no" height="60" frameborder="0" allowtransparency="true"
+                        src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=1"></iframe>
+            </div>
+            <div class="news">
+                <h3 class="ph">
+                    <p>最新<span>文章</span></p>
+                </h3>
+                <ul class="paih">
+                    {% for new in new_article %}
+                        <li>
+                            <a href="{% url 'article_details' new.id %}" title="{{ new.name }}">{{ new.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <h3>
+                    <p>文章<span>分类</span></p>
+                </h3>
+                <ul class="rank">
+                    {% for cate in category %}
+                        <li>
+                            <a href="javascript:void(0);" onclick="loadArticle({{ cate.id }})"
+                               title="{{ cate.name }}">{{ cate.name }}({% category_article_num cate.id %})</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <h3 class="links">
+                    <p>友情<span>链接</span></p>
+                </h3>
+                <ul class="website">
+                    <li><a href="https://www.cnblogs.com/Myarticles/" target="_blank">博客地址</a></li>
+                    <li><a href="https://github.com/Traeric" target="_blank">github首页</a></li>
+                    <li><a href="/" target="_blank">fork me on github</a></li>
+                    <li><a href="javascript:void(0);">今天也十分喜欢你</a></li>
+                </ul>
+            </div>
+            <!-- Baidu Button BEGIN -->
+            <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><a
+                    class="bds_qzone"></a><a class="bds_tqq"></a><a class="bds_renren"></a><span
+                    class="bds_more"></span><a
+                    class="shareCount"></a></div>
+            <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6574585"></script>
+            <script type="text/javascript" id="bdshell_js"></script>
+            <script type="text/javascript">
+                document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000)
+            </script>
+            <!-- Baidu Button END -->
+            <a href="/" class="weixin"> </a></aside>
+    </article>
+    {% csrf_token %}
+{% endblock %}
+
+{% block js %}
+    <script>
+        /**
+         * 获取该分类下的文章
+         * @param category_id
+         */
+        function loadArticle(category_id) {
+            // 获取csrf_token值
+            let csrfToken = $("input[name=csrfmiddlewaretoken]").val();
+            $.ajax({
+                url: `/load_article/${category_id}/`,
+                method: "post",
+                headers: {"X-CSRFToken": csrfToken},
+                dataType: "JSON",
+                success(args) {
+                    let articleStr = '';
+                    for (let article of args) {
+                        articleStr += `
+                            <h3><a href="/article_detail/${article.id}">${article.name}</a></h3>
+                            <figure><img src="${article.image}" alt="NO IMG"></figure>
+                            <ul>
+                                <p>${article.abstract}</p>
+                                <a title="${article.name}" href="/article_detail/${article.id}" class="readmore" style="text-decoration: none;">阅读全文>></a>
+                            </ul>
+                            <p class="dateview">
+                                <span>${article.time}</span>
+                                <span>作者：金鑫</span>
+                            </p>
+                        `;
+                    }
+                    $("#blog_show").empty().append(articleStr);
+                },
+            });
+        }
+    </script>
+{% endblock %}
+

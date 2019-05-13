@@ -1,0 +1,141 @@
+#sideToolbar {
+	position: fixed;
+	top: 260px;
+	right: 10px;
+	width: 250px;
+	height: 350px;
+}
+#sideToolbar ul,#sideToolbar ol{
+	padding: 0;
+}
+#sideToolbar li{
+	list-style: none;
+}
+#sideCatalog{
+	background-color: #f9f9f9;
+	padding-bottom:10px;
+	border-radius: 5px;
+	border: 1px solid #dedede;
+	height: 100%;
+	visibility: hidden;
+}
+#sideCatalog-sidebar {
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background-color: #eaeaea;
+	border-color: #eaeaea;
+	border-image: none;
+	border-left: 1px solid #eaeaea;
+	border-right: 1px solid #eaeaea;
+	border-style: none solid;
+	border-width: 0 1px;
+	height: 346px;
+	left: 6px;
+	position: absolute;
+	top: 2px;
+	width: 0
+}
+#sideCatalog-catalog {
+	height: 325px;
+	padding-top: 18px;
+	overflow: auto;
+	padding-left: 23px;
+	position: relative
+}
+#sideCatalog #sideCatalog-sidebar .sideCatalog-sidebar-top {
+	cursor: pointer;
+	top: 0
+}
+#sideCatalog #sideCatalog-sidebar .sideCatalog-sidebar-bottom {
+	bottom: 0
+}
+#sideCatalog #sideCatalog-sidebar .sideCatalog-sidebar-top,#sideCatalog #sideCatalog-sidebar .sideCatalog-sidebar-bottom {
+	background: url("../images/Wiz_sideToolbar.gif") no-repeat scroll 0 -199px transparent;
+	height: 10px;
+	left: -5px;
+	overflow: hidden;
+	position: absolute;
+	width: 10px
+}
+#sideCatalog li {
+	margin: 0px;
+	padding: 0 7px;
+	text-align: left;
+	position: relative
+}
+#sideCatalog li:hover {
+	background-color: #eee;
+}
+#sideCatalog-catalog ul .active {
+	background-color: #eee;
+}
+#sideCatalog-catalog .active a {
+	color: #519cea
+}
+#sideCatalog-catalog a:hover {
+	color: #519cea
+}
+#sideCatalog span:first-child {
+	color: #999;
+	font-family: Arial;
+	font-size: 14px;
+	font-weight: bold;
+	padding-right: 5px
+}
+#sideCatalog li.h2Offset {
+	padding-left: 45px;
+	text-indent: -25px
+}
+#sideCatalog li.h3Offset {
+	padding-left: 90px;
+	text-indent: -50px
+}
+#sideCatalog a {
+	text-decoration: none;
+	color: #555;
+	font-weight: bold
+}
+.sideCatalog-dot {
+	background: url("../images/Wiz_sideToolbar.gif") repeat scroll 0 -222px transparent;
+	cursor: pointer;
+	font-size: 12px;
+	height: 10px;
+	left: -20px;
+	line-height: 12px;
+	overflow: hidden;
+	position: absolute;
+	top: 4px;
+	width: 6px
+}
+#sideCatalog .highlight .sideCatalog-dot {
+	background: url("../images/Wiz_sideToolbar.gif") no-repeat scroll -271px -38px transparent;
+	height: 13px;
+	left: -23px;
+	top: 3px;
+	width: 18px
+}
+#sideCatalogBtn {
+	background: url("../images/menu.svg") no-repeat scroll 0 0 transparent;
+	background-size: 45px 45px;
+	cursor: pointer;
+	display: block;
+	height: 45px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	position: fixed;
+	right: 10px;
+	top: 200px;
+	width: 45px;
+	margin-top: 10px;
+	outline: 0
+}
+#sideCatalogBtn:hover {
+	background: url("../images/menu_a.svg");
+	background-size: 45px 45px;
+}
+
+#sideCatalog-catalog ul li span {padding: 0 !important;}
+#sideCatalog-catalog ul li a {padding: 0 !important; display: inline;}
+

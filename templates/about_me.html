@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}关于我{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+    <article class="aboutcon">
+        <h1 class="t_nav">
+            <span>你真是生了一副清高的样子，我想成为你干净明澈的眼神里独一无二的心事。</span>
+            <a href="{% url 'home' %}" class="n1">网站首页</a>
+            <a href="{% url 'about_me' %}" class="n2">关于我</a>
+        </h1>
+        <div class="about left">
+            <h2>Just about me</h2>
+            <ul>
+                <p>
+                    金鑫，99后程序员。
+                </p>
+                <p>
+                    精通Python，Java。熟悉html，css，javascript，c语言。略懂golang语言。
+                </p>
+                <p>
+                    生活随行自然，比较佛系。
+                </p>
+                <p>
+                    生活随行自然，比较佛系。
+                </p>
+                <p>
+                    生活随行自然，比较佛系。
+                </p>
+                <p>
+                    生活随行自然，比较佛系。
+                </p>
+                <p>
+                    生活随行自然，比较佛系。
+                </p>
+                <p>
+                    生活随行自然，比较佛系。
+                </p>
+            </ul>
+            <h2>About my address</h2>
+            <p>我的博客地址 <a href="https://www.cnblogs.com/Myarticles/" class="blog_link" target="_blank">点击跳转</a></p>
+            <p>Fork me on github<a href="https://github.com/Traeric" class="blog_link" target="_blank">点击跳转</a></p>
+            <p>村上春树说：如果我爱你，而你正巧也爱我。你头发乱了的时候</p>
+            <p>我会笑笑地替你拨一拨。然后，手还留恋的在你发上多待几秒。</p>
+            <p>但是，如果我爱你，而你不巧地不爱我。</p>
+            <p>你头发乱了，我只会轻轻地告诉你，你头发乱了喔。</p>
+        </div>
+        <aside class="right">
+            <div class="about_c">
+                <p>网名：<span>金千亿</span> | 123木头人</p>
+                <p>姓名：金鑫 </p>
+                <p>生日：1999-02-08</p>
+                <p>籍贯：湖南省—常德市</p>
+                <p>现居：湘潭市—雨湖区</p>
+                <p>职业：全站开发</p>
+                <p>喜欢的书：《硅谷之火》《穆斯林的葬礼》</p>
+                <p>喜欢的音乐：《Blank Space》《Gorgeous》《22》</p>
+                <a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=2789519045@qq.com">
+                    <img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_22.png"
+                         alt="杨青个人博客网站">
+                </a>
+            </div>
+        </aside>
+    </article>
+{% endblock %}
+

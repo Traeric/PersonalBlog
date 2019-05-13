@@ -1,0 +1,34 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}">
+    {% block css %}{% endblock %}
+</head>
+<body>
+<header style="border-bottom: 1px solid #dedede;" id="top">
+    <div id="logo"><a href="{% url 'home' %}"></a></div>
+    <nav class="topnav" id="topnav">
+        <a href="{% url 'home' %}">
+            <span>首页</span><span class="en">Protal</span>
+        </a>
+        <a href="{% url 'archives' %}">
+            <span>归档</span><span class="en">Archives</span>
+        </a>
+        <a href="{% url 'about_me' %}">
+            <span>关于我</span><span class="en">About</span>
+        </a>
+    </nav>
+</header>
+{% block content %}{% endblock %}
+<footer id="footer">
+    <p>Design by Eric Jin <a href="https://www.cnblogs.com/Myarticles/" target="_blank" title="博客地址">博客地址</a></p>
+</footer>
+<script src="{% static 'js/silder.js' %}"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+{% block js %}{% endblock %}
+</body>
+</html>

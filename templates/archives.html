@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load blog %}
+
+{% block title %}博客归档{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/mood.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="moodlist">
+        <h1 class="t_nav">
+            <span>突然很喜欢惊鸿一瞥这个词，一见钟情太肤浅，日久生情太苍白。别人眉来眼去，我呀，只偷看你一眼。</span>
+            <a href="{% url 'home' %}" class="n1">网站首页</a>
+            <a href="{% url 'archives' %}" class="n2">归档</a>
+        </h1>
+        <div class="bloglist">
+            {% for date_item in date_list %}
+                {% load_article_by_date date_item as articles %}
+                <ul class="arrow_box" style="padding: 0;">
+                    <div class="sy list-group" style="margin: 0;">
+                        {% for article in articles %}
+                            <a href="{% url 'article_details' article.id %}" class="list-group-item {% check_style forloop.counter0 %}">
+                                ·
+                                {{ article.time|date:'Y/m/d' }}
+                                {{ article.name }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                    <span class="dateview">{{ date_item|date:'Y年' }}</span>
+                </ul>
+            {% endfor %}
+        </div>
+        <div style="margin-bottom: 20px;"></div>
+    </div>
+{% endblock %}
+
+
