@@ -1,5 +1,5 @@
 # 首页
-![login](https://github.com/Traeric/ProjectSource/blob/master/PersonalBlog/２.png)
+![login](https://github.com/Traeric/ProjectSource/blob/master/PersonalBlog/2.png)
 # 文章
 ![login](https://github.com/Traeric/ProjectSource/blob/master/PersonalBlog/1.png)
 # 归档
